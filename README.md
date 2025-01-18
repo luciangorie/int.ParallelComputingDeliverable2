@@ -18,6 +18,7 @@ Segmentation faults or other mistakes can happen due to wrong space requests.
 
 - Graphs for strong and weak scaling of OMP and MPI approaches
 - File for visualization of block based transposition logic
+- cpp code as tool used to calculate peak performance (no pbs, can run on laptop).
 
 The main can also be created autonomously by the user that can customize an execution for different needs. be aware that:
 
