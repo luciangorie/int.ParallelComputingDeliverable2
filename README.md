@@ -5,10 +5,10 @@ here is the repository for int.PARCO H2/D2
 
 You can find:
 
-some example of implementations of main (proj.cpp -> works for serial and implicitly parallelized solution, selects the option by reading if a -true is passed by the command line or not; modified from last time, in order to include copy process in time check.
+some example of implementations of main (proj.cpp -> works for serial and implicitly parallelized solution, selects the option by reading if a -true is passed by the command line or not; modified from last time, in order to include copy process in time check.  projMPIG(N).cpp  -> MPI block based main functions, for N=4,9,16, projMPIG.cpp for RowBased solution with AlltoAll and projMPIGB9.cpp for partial solution (without collection) og 9 blocks based transposition for further checks if needed.
 
 official document IEEE also submitted via e-mail and assignment in PDF
--PBS files, that can be used in order to execute codes on the HPC cluster of UniTN in the same manner I did: { testp1.pbs is for executing proj1.cpp (serial part) 
+-PBS files, that can be used in order to execute codes on the HPC cluster of UniTN in the same manner I did: { testp1.pbs is for executing proj1.cpp (serial part) , t4.pbs t9.pbs and t16.pbs are for ProjMPIG4.cpp, ProjMPIG9.cpp and ProjMPIG16.cpp launch. testBaseRows.pbs for projMPIG.cpp and testBlock9.pbs for projMPIGB9.cpp
 !!! ATTENTION: Please change the final directory with your name and the address you keep the cpp program stored.!!! pbs files can be launched with qsub name.pbs and job status can be checked with qstat name_account.
 !!! All pbs files have a default space request between 800 mb and 2000 mb, feel free to adapt for necessity , after reading space usage considerations on PDF section. 
 Segmentation faults or other mistakes can happen due to wrong space requests.
