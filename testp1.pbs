@@ -1,0 +1,34 @@
+#!/bin/bash
+# Job name
+#PBS -N Deltestcopy
+# Output files
+#PBS -o ./output.o
+#PBS -e ./errorc.e
+# Queue name
+#PBS -q short_cpuQ
+# Set the maximum wall time
+#PBS -l walltime=0:02:00
+# Number of nodes, cpus, and amount of memory
+#PBS -l select=1:ncpus=1:mem=800mb
+
+# Carica il modulo GCC 9.1 (o quello che preferisci)
+module load gcc91
+
+g++()
+{
+  g++-9.1.0 "$@"
+}
+
+
+
+# Vai nella directory di lavoro (sostituisci con la tua directory)
+cd /home/alessandro.luzzani/ProvaParallelProgramming/Delieverable1
+
+# Compila il file C++
+g++ -o programma_eseguibile proj1.cpp
+
+# Esegui il programma compilato
+./programma_eseguibile 
+
+
+

@@ -1,0 +1,42 @@
+#!/bin/bash
+# Nome del job
+#PBS -N name_JOB
+# File di output e errori
+#PBS -o ./outputr.o
+#PBS -e ./output_controlr.e
+# Nome della coda
+#PBS -q short_cpuQ
+# Tempo massimo di esecuzione
+#PBS -l walltime=0:00:40
+# Risorse richieste
+#PBS -l select=1:ncpus=16:mpiprocs=16:mem=800mb
+
+# Caricamento moduli necessari
+module load gcc91
+module load mpich-3.2.1--gcc-9.1.0
+
+# Verifica versione del compilatore
+g++ --version
+
+# Controllo e stampa dei nodi assegnati
+if [ -f "$PBS_NODEFILE" ]; then
+    NODES=$(cat $PBS_NODEFILE)
+    echo "I nodi assegnati sono: $NODES"
+else
+    echo "File PBS_NODEFILE non trovato. Uscita."
+    exit 1
+fi
+
+
+# Cambia nella directory di lavoro
+cd /home/alessandro.luzzani/ProvaParallelProgramming/Delieverable1
+
+# Compilazione del codice  
+mpicxx projMPIG.cpp -o code.out
+if [ $? -ne 0 ]; then
+    echo "Errore durante la compilazione. Uscita."
+    exit 2
+fi
+
+
+mpirun -np 16 ./code.out
